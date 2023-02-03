@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :transportations
 
+  # Delete the transportation
+  delete 'transportations/:id', to: 'transportations#destroy', as: 'delete'
+
 end
