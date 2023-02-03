@@ -30,6 +30,9 @@ gem "jbuilder"
 # Gemfile
 gem "devise"
 
+# Install gem faker to use
+gem "faker"
+
 # Gemfile
 gem "pundit"
 
