@@ -24,4 +24,9 @@ Rails.application.routes.draw do
 
   # Destroy
   delete 'reservations/:id', to: 'reservations#destroy', as: 'delete'
+  resources :transportations
+
+  # Delete the transportation
+  delete 'transportations/:id', to: 'transportations#destroy', as: 'delete'
+
 end

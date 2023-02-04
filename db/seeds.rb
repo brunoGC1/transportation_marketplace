@@ -25,4 +25,18 @@ transportation = Transportation.create(
     total_price: 100,
     user_id: User.first.id,
     transportation_id: Transportation.first.id)
+
+require 'faker'
+
+User.create(email: "carlos@carlos.com", password: "123456")
+
+
+5.times do
+  transportation = Transportation.create(
+    brand: Faker::Vehicle.manufacture,
+    brand_model: Faker::Vehicle.model,
+    price: Faker::Number.number(digits: 8),
+    user_id: User.first.id
+  )
+  puts "Transportation with id: #{transportation.id} has been created"
 end
