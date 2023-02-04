@@ -19,11 +19,11 @@ class TransportationPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.user == user
   end
 
   def edit?
-    update?
+    record.user == user
   end
 
   def destroy?

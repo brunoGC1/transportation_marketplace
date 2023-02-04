@@ -9,21 +9,26 @@ class TransportationsController < ApplicationController
   end
 
   def new
+    if current_user.blank?
+      redirect_to new_user_session_path
+    end
     @transportation = Transportation.new
     authorize @transportation
   end
 
   def create
-    # @transportation = Transportation.new(transportation_params)
-    # if @transportation.save
-    #   redirect_to @transportation, notice: "Transportation was successfully created"
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
     @transportation = Transportation.new(transportation_params)
-    @transportation.save
-    redirect_to transportations_path
+    @transportation.user = current_user
     authorize @transportation
+      if @transportation.save
+        redirect_to transportation_path(@transportation), notice: "Transportation was successfully created"
+      else
+        render :new, status: :unprocessable_entity
+      end
+      
+    # @transportation = Transportation.new(transportation_params)
+    # @transportation.save
+    # redirect_to transportations_path
   end
 
   def edit
@@ -41,6 +46,7 @@ class TransportationsController < ApplicationController
   def destroy
     @transportation = Transportation.find(params[:id])
     @transportation.destroy
+
     redirect_to transportations_path
     authorize @transportation
   end
