@@ -25,8 +25,7 @@ transportation = Transportation.create(
     total_price: 100,
     user_id: User.first.id,
     transportation_id: Transportation.first.id)
-
-require 'faker'
+end
 
 User.create(email: "carlos@carlos.com", password: "123456")
 

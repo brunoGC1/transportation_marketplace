@@ -1,13 +1,23 @@
-<h1>Reservation:</h1>
-<p>Start date: <%= @reservation.start_date %></p>
-<p>End date: <%= @reservation.end_date %></p>
-<p>Total price: <%= @reservation.total_price %></p>
+<%# <h1>Reservation:</h1>
+<p>Start date: <%= @reservation.start_date %>
+<%# <p>End date: <%= @reservation.end_date %>
+<%# <p>Total price: <%= @reservation.total_price %>
+<p><strong>Reservation</strong></p>
+<ul class="list-group">
+  <% @transportation.reservations.each do |reservation| %>
+    <li class="list-group-item"><%= reservation.start_date %></li>
+    <li class="list-group-item"><%= reservation.end_date %></li>
+    <li class="list-group-item"><%= reservation.total_price %></li>
+  <% end %>
+</ul>
+<br>
+
 <%# Add new reservation %>
-<%= link_to new_path do %>
+<%= link_to new_reservation_path do %>
   <i class="fa-solid fa-plus"></i>
 <% end %>
 <%# Edit reservation %>
-<%= link_to edit_path do %>
+<%= link_to edit_reservation_path do %>
   <i class="fa-solid fa-pen-to-square"></i>
 <% end %>
 <%# Back to homepage %>

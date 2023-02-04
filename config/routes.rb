@@ -7,26 +7,29 @@ Rails.application.routes.draw do
   # root "articles#index"
   # resource :reservations
 
-  # CRUD
+  # # CRUD
 
-  # Read
-  get 'reservations', to: 'reservations#index'
-  get "reservations/:id", to: "reservations#show", as: 'reservation'
+  # # Read
+  # get 'reservations', to: 'reservations#index'
+  # get "reservations/:id", to: "reservations#show", as: 'reservation'
 
-  # Create
-  get 'transportation/:id/reservations/new', to: 'reservations#new'
-  get 'reservations/new', to: 'reservations#new'
-  post 'reservations', to: 'reservations#create', as: 'new'
+  # # Create
+  # get 'transportations/:id/reservations/new', to: 'reservations#new'
+  # get 'reservations/new', to: 'reservations#new'
+  # post 'reservations', to: 'reservations#create', as: 'new'
 
-  # Update
-  get 'reservations/:id/edit', to: 'reservations#edit', as: 'edit'
-  patch 'reservations/:id', to: 'reservations#update'
+  # # Update
+  # get 'reservations/:id/edit', to: 'reservations#edit', as: 'edit'
+  # patch 'reservations/:id', to: 'reservations#update'
 
-  # Destroy
-  delete 'reservations/:id', to: 'reservations#destroy', as: 'delete'
-  resources :transportations
+  # # Destroy
+  # delete 'reservations/:id', to: 'reservations#destroy', as: 'delete'
+# end
 
+  resources :transportations do
+    resources :reservations, only: [:index, :new, :create]
+  end
+  resources :reservations, only: [:show, :edit, :update, :destroy]
   # Delete the transportation
-  delete 'transportations/:id', to: 'transportations#destroy', as: 'delete'
-
+  delete 'transportations/:id', to: 'transportations#destroy', as: 'delete_transportation'
 end

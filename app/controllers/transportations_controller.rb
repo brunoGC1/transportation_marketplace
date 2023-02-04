@@ -1,4 +1,6 @@
 class TransportationsController < ApplicationController
+  # before_action :set_transportation, only: %i[new create]
+
   def index
     @transportations = policy_scope(Transportation)
   end
@@ -25,7 +27,7 @@ class TransportationsController < ApplicationController
       else
         render :new, status: :unprocessable_entity
       end
-      
+
     # @transportation = Transportation.new(transportation_params)
     # @transportation.save
     # redirect_to transportations_path
@@ -52,6 +54,10 @@ class TransportationsController < ApplicationController
   end
 
   private
+
+  # def set_transportation
+  #   @transportation = Transportation.find(params[:id])
+  # end
 
   def transportation_params
     params.require(:transportation).permit(:brand, :brand_model, :price, :user_id)

@@ -9,17 +9,19 @@ class ReservationsController < ApplicationController
   end
 
   def new
+    @transportation = Transportation.find(params[:transportation_id])
     @reservation = Reservation.new
     authorize @reservation
   end
 
   def create
+    @transportation = Transportation.find(params[:transportation_id])
     @reservation = Reservation.new(reservation_params)
+    @reservation.transportation = @transportation
     @reservation.user = current_user
-    authorize @reservation
     @reservation.save
-
-    redirect_to reservations_path
+    redirect_to transportations_path
+    authorize @reservation
   end
 
   def edit
@@ -37,10 +39,10 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation = Reservation.find(params[:id])
-    authorize @reservation
     @reservation.destroy
 
     redirect_to reservations_path
+    authorize @reservation
   end
 
   private
