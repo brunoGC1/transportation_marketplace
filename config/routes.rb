@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   # delete 'reservations/:id', to: 'reservations#destroy', as: 'delete'
 # end
 
+  resources :profiles, only: [:show]
+
   resources :transportations do
     resources :reservations, only: [:index, :new, :create]
   end

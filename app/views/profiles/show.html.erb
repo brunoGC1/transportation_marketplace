@@ -1,0 +1,25 @@
+<p><strong>Transportations</strong></p>
+<ul class="list-group">
+  <% @user_transportations.each do |transportation| %>
+    <li class="list-group-item"><%= transportation.brand %></li>
+    <li class="list-group-item"><%= transportation.brand_model %></li>
+       <% transportation.reservations.each do |reservation| %>
+        <li class="list-group-item"><%= reservation.start_date %></li>
+        <li class="list-group-item"><%= reservation.end_date %></li>
+        <li class="list-group-item"><%= reservation.total_price %></li>
+       <% end %>
+  <% end %>
+</ul>
+<br>
+
+<p><strong>My <br> reservations</strong></p>
+<ul class="list-group">
+  <% @user_reservations.each do |reservation| %>
+    <li class="list-group-item"><%= reservation.transportation.brand %></li>
+    <li class="list-group-item"><%= reservation.transportation.brand_model %></li>
+    <li class="list-group-item"><%= reservation.start_date %></li>
+    <li class="list-group-item"><%= reservation.end_date %></li>
+    <li class="list-group-item"><%= reservation.total_price %></li>
+  <% end %>
+</ul>
+<br>
