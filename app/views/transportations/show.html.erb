@@ -1,0 +1,18 @@
+<h1>Info of Transportation</h1>
+
+<%= image_tag 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' ,width: 200 %>
+<p>Brand: <%= @transportation.brand %></p>
+<p>Model: <%= @transportation.brand_model %></p>
+<p>Price: <%= @transportation.price %></p>
+
+<p><strong>Reservation</strong></p>
+<ul class="list-group">
+ <%# <%= link_to "New reservation", new_reservation_path %>
+</ul>
+<hr>
+
+<%= link_to "Edit transportation", edit_transportation_path %>
+
+<%= link_to "Remove this transportation", delete_path(@transportation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+<%= link_to "Back to list", transportations_path %>

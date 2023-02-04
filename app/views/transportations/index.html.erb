@@ -1,0 +1,19 @@
+
+<div class="container">
+
+  <h1>Info of Transportation</h1>
+
+  <ul>
+    <% @transportations.each do |transportation| %>
+      <p>Brand: <%= link_to transportation.brand, transportation_path(transportation.id)%></p>
+      <p>Model: <%= transportation.brand_model %></p>
+      <p>Price: <%= transportation.price %></p>
+    <% end %>
+  </ul>
+  
+  <%= link_to new_transportation_path do %>
+    <%= "New transportation" %>
+    <i class="fa-solid fa-plus"></i>
+  <% end %>
+  <%= link_to "Back to list", root_path %>
+</div>
