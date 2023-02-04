@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
+Reservation.destroy_all
+Transportation.destroy_all
+User.destroy_all
+User.create(email: "aaaa@gmail.com", password: "123456")
+
+transportation = Transportation.create(
+  brand: Faker::Vehicle.manufacture,
+  brand_model: Faker::Vehicle.model,
+  price: Faker::Number.number(digits: 8),
+  user_id: User.first.id)
+
+5.times do
+  reservation = Reservation.create(
+    start_date: Date.today,
+    end_date: Date.tomorrow,
+    total_price: 100,
+    user_id: User.first.id,
+    transportation_id: Transportation.first.id)
+end

@@ -1,0 +1,20 @@
+<h1>Reservation:</h1>
+<p>Start date: <%= @reservation.start_date %></p>
+<p>End date: <%= @reservation.end_date %></p>
+<p>Total price: <%= @reservation.total_price %></p>
+<%# Add new reservation %>
+<%= link_to new_path do %>
+  <i class="fa-solid fa-plus"></i>
+<% end %>
+<%# Edit reservation %>
+<%= link_to edit_path do %>
+  <i class="fa-solid fa-pen-to-square"></i>
+<% end %>
+<%# Back to homepage %>
+<%= link_to root_path do %>
+  <i class="fa-solid fa-house"></i>
+<% end %>
+<%# Destroy %>
+<%= link_to reservations_path(@reservation.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+  <i class="fa-regular fa-trash-can"></i>
+<% end %>

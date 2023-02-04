@@ -1,0 +1,9 @@
+<h1>Editing reservation:</h1>
+<%= simple_form_for @reservation(reservation.id) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.button :submit %>
+<% end %>
+<%= link_to reservations_path do %>
+  <i class="fa-solid fa-circle-arrow-left"></i>
+<% end %>

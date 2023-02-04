@@ -1,0 +1,13 @@
+<h1>Reservations</h1>
+<% @reservations.each do |reservation| %>
+  <h3><%= link_to "Reservation", reservation_path(reservation.id) %></h3>
+  <p>Start date: <%= reservation.start_date %></p>
+  <p>End date: <%= reservation.end_date %></p>
+  <p>User: <%= reservation.user_id %></p>
+  <p>Transportation: <%= reservation.transportation_id %></p>
+  <p>Total price: <%= reservation.total_price %></p>
+<% end %>
+<%= link_to root_path do %>
+  <i class="fa-solid fa-house"></i>
+<% end %>
+<%# <%= link_to "Back", root_path if policy(Reservation).new? %>

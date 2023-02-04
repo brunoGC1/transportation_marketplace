@@ -5,4 +5,23 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  # resource :reservations
+
+  # CRUD
+
+  # Read
+  get 'reservations', to: 'reservations#index'
+  get "reservations/:id", to: "reservations#show", as: 'reservation'
+
+  # Create
+  get 'transportation/:id/reservations/new', to: 'reservations#new'
+  get 'reservations/new', to: 'reservations#new'
+  post 'reservations', to: 'reservations#create', as: 'new'
+
+  # Update
+  get 'reservations/:id/edit', to: 'reservations#edit', as: 'edit'
+  patch 'reservations/:id', to: 'reservations#update'
+
+  # Destroy
+  delete 'reservations/:id', to: 'reservations#destroy', as: 'delete'
 end
