@@ -7,12 +7,12 @@
 
 <p><strong>Reservation</strong></p>
 <ul class="list-group">
- <%# <%= link_to "New reservation", new_reservation_path %>
+ <%= link_to "New reservation", new_transportation_reservation_path(@transportation) %>
 </ul>
 <hr>
 
 <%= link_to "Edit transportation", edit_transportation_path %>
 
-<%= link_to "Remove this transportation", delete_path(@transportation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<%= link_to "Remove this transportation", delete_transportation_path(@transportation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 
 <%= link_to "Back to list", transportations_path %>

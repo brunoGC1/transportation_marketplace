@@ -1,0 +1,30 @@
+<%# <h1>Reservation:</h1>
+<p>Start date: <%= @reservation.start_date %>
+<%# <p>End date: <%= @reservation.end_date %>
+<%# <p>Total price: <%= @reservation.total_price %>
+<p><strong>Reservation</strong></p>
+<ul class="list-group">
+  <% @transportation.reservations.each do |reservation| %>
+    <li class="list-group-item"><%= reservation.start_date %></li>
+    <li class="list-group-item"><%= reservation.end_date %></li>
+    <li class="list-group-item"><%= reservation.total_price %></li>
+  <% end %>
+</ul>
+<br>
+
+<%# Add new reservation %>
+<%= link_to new_reservation_path do %>
+  <i class="fa-solid fa-plus"></i>
+<% end %>
+<%# Edit reservation %>
+<%= link_to edit_reservation_path do %>
+  <i class="fa-solid fa-pen-to-square"></i>
+<% end %>
+<%# Back to homepage %>
+<%= link_to root_path do %>
+  <i class="fa-solid fa-house"></i>
+<% end %>
+<%# Destroy %>
+<%= link_to reservations_path(@reservation.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+  <i class="fa-regular fa-trash-can"></i>
+<% end %>
