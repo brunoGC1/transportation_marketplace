@@ -1,8 +1,25 @@
-.navbar-lewagon {
+.navbar{
+  display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   background: white;
+  margin: 0 auto;
+  max-width: 100vw;
+  padding: 0 60px;
+}
+.navbar-lewagon ul{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
 }
 
+.navbar-lewagon a {
+  text-decoration: none;
+  border: 1 red solid;
+  padding: 5px 10px;
+  text-transform: uppercase;
+
+}
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
