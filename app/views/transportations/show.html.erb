@@ -1,15 +1,20 @@
 <h1>Info of Transportation</h1>
 
-<%= image_tag 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' ,width: 200 %>
-<p>Brand: <%= @transportation.brand %></p>
-<p>Model: <%= @transportation.brand_model %></p>
-<p>Price: <%= @transportation.price %></p>
+<div class="card-trip">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <div class="card-trip-infos">
+    <div>
+      <%= image_tag 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' ,width: 200 %>
+      <p>Brand: <%= @transportation.brand %></p>
+      <p>Model: <%= @transportation.brand_model %></p>
+      <p>Price: <%= @transportation.price %></p>
+    </div>
+    <h2 class="card-trip-pricing">£99.99</h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
+</div>
 
-<p><strong>Reservation</strong></p>
-<ul class="list-group">
- <%= link_to "New reservation", new_transportation_reservation_path(@transportation) %>
-</ul>
-<hr>
+<%= link_to "New reservation", new_transportation_reservation_path(@transportation) %>
 
 <%= link_to "Edit transportation", edit_transportation_path %>
 
