@@ -2,14 +2,16 @@
 <div class="container">
 
   <h1>Info of Transportation</h1>
-
-  <ul>
-    <% @transportations.each do |transportation| %>
-      <p>Brand: <%= link_to transportation.brand, transportation_path(transportation.id)%></p>
-      <p>Model: <%= transportation.brand_model %></p>
-      <p>Price: <%= transportation.price %></p>
-    <% end %>
-  </ul>
+    <ul>
+      <% @transportations.each do |transportation| %>
+        <p>Brand: <%= link_to transportation.brand, transportation_path(transportation.id)%></p>
+        <p>Model: <%= transportation.brand_model %></p>
+        <p>Price: <%= transportation.price %></p>
+        <% if transportation.photo.attached? %>
+          <%= cl_image_tag(transportation.photo.key, width: 400, height: 300, crop: :fill) %>
+        <% end %>
+      <% end %>
+    </ul>
 
   <%= link_to new_transportation_path do %>
     <%= "New transportation" %>

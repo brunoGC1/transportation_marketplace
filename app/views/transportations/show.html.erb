@@ -13,6 +13,10 @@
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
   </div>
 </div>
+<%= cl_image_tag(@transportation.photo.key, width: 400, height: 300, crop: :fill) %>
+<p>Brand: <%= @transportation.brand %></p>
+<p>Model: <%= @transportation.brand_model %></p>
+<p>Price: <%= @transportation.price %></p>
 
 <%= link_to "New reservation", new_transportation_reservation_path(@transportation) %>
 
