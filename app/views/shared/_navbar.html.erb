@@ -1,9 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%= image_tag "https://res.cloudinary.com/dj4pcbqff/image/upload/v1675815077/WhatsApp_Image_2023-02-03_at_5.26.42_PM_waq1gn.jpg" %>
     <% end %>
+    <section>
 
+<form action="/search" accept-charset="UTF-8" method="get">
+        <div class="search-form-control form-group">
+          <input type="text" name="query" id="query" class="form-control" placeholder="move with us" />
+              <button name="button" type="submit" class="btn btn-flat-navbar">
+                <i class="fas fa-search"></i> Search
+              </button>
+          </div>
+</form>
+</section>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
