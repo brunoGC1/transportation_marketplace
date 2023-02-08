@@ -18,6 +18,7 @@ class ReservationsController < ApplicationController
     @transportation = Transportation.find(params[:transportation_id])
     @reservation = Reservation.new(reservation_params)
     @reservation.transportation = @transportation
+    @reservation.total_price = @transportation.price * ((@reservation.end_date - @reservation.start_date) / 86_400).to_i
     @reservation.user = current_user
     @reservation.save
     redirect_to transportations_path
