@@ -2,7 +2,7 @@
 <%= simple_form_for [@transportation, @reservation] do |f| %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
-  <%= f.input :total_price %>
+  <%= f.hidden_field :total_price %>
+  <%# <%= f.hidden_field "selected" , "none" %>
   <%= f.button :submit %>
 <% end %>
-
