@@ -42,7 +42,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
 
-    redirect_to reservations_path
+    redirect_to reservation_path
     authorize @reservation
   end
 

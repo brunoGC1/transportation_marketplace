@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   resources :transportations do
     resources :reservations, only: [:index, :new, :create]
   end
-  resources :reservations, only: [:show, :edit, :update, :destroy]
+  resources :reservations, only: [:show, :edit, :update]
   # Delete the transportation
   delete 'transportations/:id', to: 'transportations#destroy', as: 'delete_transportation'
+  delete 'reservations/:id', to: 'reservations#destroy', as: 'delete_reservation'
 end
