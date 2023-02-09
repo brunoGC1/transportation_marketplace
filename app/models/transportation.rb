@@ -1,5 +1,5 @@
 class Transportation < ApplicationRecord
   belongs_to :user
   has_many :reservations, dependent: :destroy
-  has_one_attached :photo # Cloudinary
+  has_many_attached :photos # Cloudinary
 end

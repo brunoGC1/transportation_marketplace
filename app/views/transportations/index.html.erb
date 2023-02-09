@@ -1,29 +1,45 @@
 <div class="container">
-  <h1>Info of Transportation</h1>
-  <div class="cards">
-    <ul>
-      <% @transportations.each do |transportation| %>
-        <div class="card-trip">
-          <% if transportation.photo.attached? %>
-            <%= cl_image_tag(transportation.photo.key, crop: :fill) %>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-          <% end %>
-            <div class="card-trip-infos">
-              <div>
-                <p>Brand: <%= link_to transportation.brand, transportation_path(transportation.id)%></p>
-                <p>Model: <%= transportation.brand_model %></p>
-                <p>Price: <%= transportation.price %></p>
-              </div>
-              <h2 class="card-trip-pricing">£99.99</h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-            </div>
+  <h1>Transportations:</h1>
+  <div class="grid-container">
+    <% @transportations.each do |transportation| %>
+      <div class="card-trip">
+        <% if transportation.photos.attached? %>
+          <%= cl_image_tag(transportation.photos.first.key, :gravity=>"cld-decompose_tile", :crop=>"crop") %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <p>Brand: <%= link_to transportation.brand, transportation_path(transportation.id)%></p>
+            <p>Model: <%= transportation.brand_model %></p>
+            <%# <p>Price: <%= transportation.price %>
+          </div>
+          <h2 class="card-trip-pricing"><%= "R$#{transportation.price}" %></h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
         </div>
-      <% end %>
-    </ul>
+      </div>
+    <% end %>
   </div>
+ <%= link_to "New transportation", new_transportation_path, class: "btn btn-flat" %>
 </div>
 
-<%= link_to new_transportation_path do %>
-  <%= "New transportation" %>
-<% end %>
+<%# <div class="container"> %>
+  <%# <%= link_to new_transportation_path do %>
+    <%# <a class="btn btn-flat" href="transportations/new">New transportation</a> %>
+  <%# <% end %>
+<%# </div> %>
+
+<%# ///////////////////////////////////////////////////////////// %>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+     <i class="fas fa-heart"></i>
+  </div>
+</div>

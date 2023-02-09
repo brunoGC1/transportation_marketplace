@@ -3,7 +3,9 @@
     <%= f.input :brand %>
     <%= f.input :brand_model %>
     <%= f.input :price %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit class: "btn btn-flat" %>
   <% end %>
 </div>

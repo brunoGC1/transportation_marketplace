@@ -1,26 +1,55 @@
 <div class="container">
-  <h1>Info of Transportation</h1>
-    <div class="card-trip">
-        <% if @transportation.photo.attached? %>
-          <%= cl_image_tag(@transportation.photo.key, crop: :fill) %>
-        <% else %>
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-        <% end %>
-      <div class="card-trip-infos">
+  <h1><%= "#{@transportation.brand}: #{@transportation.brand_model}" %></h1>
+    <div class="show-card-trip">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+              <% @transportation.photos.each_with_index do |photo, index| %>
+                <div class="<%= index == 0 ? "carousel-item active" : "carousel-item" %>">
+                  <%= cl_image_tag photo.key, :gravity=>"cld-decompose_tile", crop: :fill, class: "d-block w-100 carousel-img" %>
+                </div>
+              <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      <div class="show-card-trip-infos">
         <div>
           <p>Brand: <%= @transportation.brand %></p>
           <p>Model: <%= @transportation.brand_model %></p>
-          <p>Price: <%= @transportation.price %></p>
+          <%# <p>Price: <%= @transportation.price %>
         </div>
-        <h2 class="card-trip-pricing">£99.99</h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      <h2 class="show-card-trip-pricing"><%= "R$#{@transportation.price}" %></h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="show-card-trip-user avatar-bordered" />
       </div>
     </div>
-    <%= link_to "New reservation", new_transportation_reservation_path(@transportation) %>
+    <%= link_to "New reservation", new_transportation_reservation_path(@transportation), class: "btn btn-flat" %>
+    <%= link_to "Edit transportation", edit_transportation_path, class: "btn btn-flat" %>
+    <%= link_to "Remove this transportation", delete_transportation_path(@transportation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-flat" %>
+    <%= link_to "Back to list", transportations_path, class: "btn btn-flat" %>
+</div>
 
-    <%= link_to "Edit transportation", edit_transportation_path %>
+<%# /////////////////////////////////////////////////// %>
 
-    <%= link_to "Remove this transportation", delete_transportation_path(@transportation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-
-    <%= link_to "Back to list", transportations_path %>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+     <i class="fas fa-heart"></i>
+  </div>
 </div>

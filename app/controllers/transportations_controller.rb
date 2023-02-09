@@ -60,6 +60,6 @@ class TransportationsController < ApplicationController
   # end
 
   def transportation_params
-    params.require(:transportation).permit(:brand, :brand_model, :price, :user_id, :photo)
+    params.require(:transportation).permit(:brand, :brand_model, :price, :user_id, photos: [])
   end
 end
