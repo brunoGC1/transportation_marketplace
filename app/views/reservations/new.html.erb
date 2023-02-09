@@ -1,8 +1,8 @@
 <div class="container">
   <h1>New reservation:</h1>
-  <%= simple_form_for [@transportation, @reservation] do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+  <%= simple_form_for [@transportation, @reservation], data: { controller: 'flatpickr' } do |f| %>
+    <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+    <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
     <%= f.hidden_field :total_price %>
     <%# <%= f.hidden_field "selected" , "none" %>
     <%= f.submit class: "btn btn-flat"%>
