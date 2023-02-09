@@ -1,17 +1,58 @@
-<h1>Info of Transportation</h1>
-<%= cl_image_tag(@transportation.photo.key, width: 400, height: 300, crop: :fill) %>
-<p>Brand: <%= @transportation.brand %></p>
-<p>Model: <%= @transportation.brand_model %></p>
-<p>Price: <%= @transportation.price %></p>
+<div class="container">
+<div class="card-category" style="background-image: linear-gradient(#181D31), url(https://images.unsplash.com/photo-1604156788856-2ce5f2171cce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+);">
+  <%= "#{@transportation.brand}: #{@transportation.brand_model}" %>
+</div>
+    <div class="show-card-trip">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+              <% @transportation.photos.each_with_index do |photo, index| %>
+                <div class="<%= index == 0 ? "carousel-item active" : "carousel-item" %>">
+                  <%= cl_image_tag photo.key, :gravity=>"cld-decompose_tile", crop: :fill, class: "d-block w-100 carousel-img" %>
+                </div>
+              <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      <div class="show-card-trip-infos">
+        <div>
+          <p>Brand: <%= @transportation.brand %></p>
+          <p>Model: <%= @transportation.brand_model %></p>
+          <%# <p>Price: <%= @transportation.price %>
+        </div>
+      <h2 class="show-card-trip-pricing"><%= "R$#{@transportation.price}" %></h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="show-card-trip-user avatar-bordered" />
+      </div>
+    </div>
+    <%= link_to "New reservation", new_transportation_reservation_path(@transportation), class: "btn btn-flat" %>
+    <%= link_to "Edit transportation", edit_transportation_path, class: "btn btn-flat" %>
+    <%= link_to "Remove this transportation", delete_transportation_path(@transportation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-flat" %>
+    <%= link_to "Back to list", transportations_path, class: "btn btn-flat" %>
+</div>
 
-<p><strong>Reservation</strong></p>
-<ul class="list-group">
- <%= link_to "New reservation", new_transportation_reservation_path(@transportation) %>
-</ul>
-<hr>
+<%# /////////////////////////////////////////////////// %>
 
-<%= link_to "Edit transportation", edit_transportation_path %>
-
-<%= link_to "Remove this transportation", delete_transportation_path(@transportation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-
-<%= link_to "Back to list", transportations_path %>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+     <i class="fas fa-heart"></i>
+  </div>
+</div>
