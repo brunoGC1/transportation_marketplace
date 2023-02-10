@@ -1,5 +1,7 @@
 class TransportationsController < ApplicationController
-  # before_action :set_transportation, only: %i[new create]
+  # before_action :set_transportation, only: %w[new create edit update destroy]
+  before_action :authenticate_user!, only: %w[new create edit update destroy]
+
 
   def index
     @transportations = policy_scope(Transportation)
@@ -48,7 +50,6 @@ class TransportationsController < ApplicationController
   def destroy
     @transportation = Transportation.find(params[:id])
     @transportation.destroy
-
     redirect_to transportations_path
     authorize @transportation
   end

@@ -1,4 +1,6 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @reservations = policy_scope(Reservation)
   end
