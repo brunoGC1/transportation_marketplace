@@ -17,14 +17,18 @@
   <i class="fa-solid fa-plus"></i>
 <% end %>
 <%# Edit reservation %>
-<%= link_to edit_reservation_path do %>
-  <i class="fa-solid fa-pen-to-square"></i>
+<% if policy(@transportation).edit? %>
+  <%= link_to edit_reservation_path do %>
+    <i class="fa-solid fa-pen-to-square"></i>
+  <% end %>
 <% end %>
 <%# Back to homepage %>
 <%= link_to root_path do %>
   <i class="fa-solid fa-house"></i>
 <% end %>
 <%# Destroy %>
-<%= link_to reservations_path(@reservation.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-  <i class="fa-regular fa-trash-can"></i>
+<% if policy(@transportation).destroy? %>
+  <%= link_to reservations_path(@reservation.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+    <i class="fa-regular fa-trash-can"></i>
+  <% end %>
 <% end %>
