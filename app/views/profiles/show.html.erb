@@ -1,49 +1,84 @@
 <div class="container">
-  <div class="card-category" style="background-image: linear-gradient(#181D31), url(https://images.unsplash.com/photo-1604156788856-2ce5f2171cce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);">
-    <p><strong>Transportations:</strong></p>
-  </div>
-    <ul class="list-group">
-      <% @user_transportations.each do |transportation| %>
-        <li class="list-group-item"><%= transportation.brand %></li>
-        <li class="list-group-item"><%= transportation.brand_model %></li>
-        <% transportation.reservations.each do |reservation| %>
-          <li class="list-group-item"><%= reservation.start_date %></li>
-          <li class="list-group-item"><%= reservation.end_date %></li>
-          <li class="list-group-item"><%= reservation.total_price %></li>
-        <% end %>
-      <% end %>
-    </ul>
-
-  <div class="card-category" style="background-image: linear-gradient(#181D31), url(https://images.unsplash.com/photo-1604156788856-2ce5f2171cce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);">
-    <p>My reservations:</p>
+  <div class="card-category" style="background-image: linear-gradient(#181D31)">
+    <p><strong>Transportations</strong></p>
   </div>
     <div class="grid-container">
-      <% @user_reservations.each do |reservation| %>
-          <div class="profile-card-trip">
-
-            <% if reservation.transportation.photos.attached? %>
-              <%= cl_image_tag(reservation.transportation.photos.first.key, :gravity=>"cld-decompose_tile", :crop=>"crop") %>
-            <% else %>
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-            <% end %>
-      <div class="profile-card-trip-infos">
-              <div>
-                <p><%= reservation.transportation.brand %></p>
-                <p><%= reservation.transportation.brand_model %></p>
-                <p><%= reservation.start_date %></p>
-                <p><%= reservation.end_date %></p>
-                <p><%= reservation.total_price %></p>
-              </div>
-            <h2 class="profile-card-trip-pricing"><%= "R$#{reservation.total_price}" %></h2>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="profile-card-trip-user avatar-bordered" />
+      <% @user_transportations.each do |transportation| %>
+        <div class="profile-card-trip">
+          <% if transportation.photos.attached? %>
+            <%= cl_image_tag(transportation.photos.first.key, :gravity=>"cld-decompose_tile", :crop=>"crop") %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <% end %>
+          <div class="profile-card-trip-infos">
+            <div>
+              <p><strong>Reservations for:</strong></p>
+              <p><strong>Brand: </strong><%= transportation.brand %></p>
+              <p><strong>Model: </strong><%= transportation.brand_model %></p>
+              <br>
+              <% transportation.reservations.each do |reservation| %>
+                <table class="table table-hover">
+                  <thead>
+                    <tr class="table-success">
+                      <th class="text-center" scope="col">#</th>
+                      <th scope="col">From:</th>
+                      <th scope="col">To:</th>
+                      <th scope="col">Total:</th>
+                      <th scope="col">#</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-warning">
+                      <th scope="row"></th>
+                      <td class="text-center"><%= reservation.start_date.strftime('%a, %d-%b-%Y') %></td>
+                      <td class="text-center"><%= reservation.end_date.strftime('%a, %d-%b-%Y') %></td>
+                      <td class="text-center"><%= "R$ #{reservation.total_price}" %></td>
+                      <td class="text-center"><%=     %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              <br>
+              <% end %>
+            </div>
           </div>
-        <div class="text-center">
-          <%= link_to "Remove this reservation", delete_reservation_path(reservation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-flat"%>
+          <%# TOTAL_PRICE %>
         </div>
       <% end %>
-  </div>
     </div>
 </div>
+
+<div class="container">
+  <div class="card-category" style="background-image: linear-gradient(#181D31), url(https://images.unsplash.com/photo-1604156788856-2ce5f2171cce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);">
+    <p>My reservations</p>
+  </div>
+  <div class="grid-container">
+    <% @user_reservations.each do |reservation| %>
+      <div class="profile-card-trip">
+        <% if reservation.transportation.photos.attached? %>
+          <%= cl_image_tag(reservation.transportation.photos.first.key, :gravity=>"cld-decompose_tile", :crop=>"crop") %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <% end %>
+        <div class="profile-card-trip-infos">
+          <div>
+            <p><strong>Brand:</strong> <%= reservation.transportation.brand %></p>
+            <p><strong>Model:</strong> <%= reservation.transportation.brand_model %></p>
+            <p><strong>From:</strong> <%= reservation.start_date.strftime('%a, %d-%b-%Y') %></p>
+            <p><strong>To:</strong> <%= reservation.end_date.strftime('%a, %d-%b-%Y') %></p>
+          </div>
+        </div>
+        <div class="text-center">
+        <br>
+          <h2 class="profile-card-trip-pricing"><%= "R$#{reservation.total_price}" %></h2>
+        </div>
+        <div class="text-center">
+          <%= link_to "Cancel this reservation", delete_reservation_path(reservation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-flat"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 
 <%# /////////////////////FOOTER//////////////////////// %>
 

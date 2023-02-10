@@ -2,11 +2,16 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 350px;
-  height: 300px;
+  // width: 350px;
+  // height: 300px;
+  width: auto;
+  height: auto;
 }
 
-div.grid-container {
+.grid-container {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto auto;
+  justify-content: space-evenly;
   padding-top: 15px;
   display: inline-grid;
   grid-template-columns: auto auto auto;
@@ -29,7 +34,6 @@ div.container {
 .card-trip h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
 }
 
 .card-trip p {
@@ -51,4 +55,23 @@ div.container {
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-category {
+  background-position: center;
+  background-color: #181D31;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-category h1 {
+  font-size: 34px;
+  font-weight: bold;
+  font-family: "Work Sans", "Helvetica", "sans-serif";
 }

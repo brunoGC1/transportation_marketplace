@@ -1,15 +1,14 @@
 .btn-flat {
-  justify-content: space-around;
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
   background: #404258;
   transition: background 0.3s ease;
-  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-top: 20px;
 }
 
 .btn-flat:hover {
   background: #50577A;
   color: white;
 }
-

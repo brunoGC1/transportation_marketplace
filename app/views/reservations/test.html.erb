@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Reservation:</h1>
+    <div class="show-card-trip">
+        <% if @reservation.photo.attached? %>
+          <%= cl_image_tag(@reservation.photo.key, :gravity=>"cld-decompose_tile", :crop=>"crop") %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <% end %>
+      <div class="show-card-trip-infos">
+          <% @reservation.reservations.each do |reservation| %>
+            <li class="list-group-item"><%= reservation.start_date %></li>
+            <li class="list-group-item"><%= reservation.end_date %></li>
+            <li class="list-group-item"><%= reservation.total_price %></li>
+          <% end %>
+        <h2 class="show-card-trip-pricing"><%= "R$#{@reservation.price}" %></h2>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="show-card-trip-user avatar-bordered" />
+      </div>
+    </div>
+<%# Add new reservation %>
+<%= link_to "New reservation", new_reservation_path, class: "btn btn-flat" %>
+<%# Edit reservation %>
+<%= link_to "Edit transportation", edit_reservation_path, class: "btn btn-flat" %>
+<%# Back to homepage %>
+<%= link_to "Back to homepage", root_path, class: "btn btn-flat" %>
+<%# Destroy %>
+<%= link_to "Remove this reservation", delete_reservation_path(@reservation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-flat" %>
+</div>
+
+<%# /////////////////////////////////////////////////// %>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+     <i class="fas fa-heart"></i>
+  </div>
+</div>
