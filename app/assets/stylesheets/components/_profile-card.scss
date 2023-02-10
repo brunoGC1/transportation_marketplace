@@ -2,19 +2,24 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 350px;
-  height: 450px;
+  // width: 350px;
+  // height: 460px;
+  width: auto;
+  height: auto;
 }
 
-div.grid-container {
+.grid-container {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto auto;
+  justify-content: center;
+  align-content: center;
   padding-top: 15px;
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-  column-gap: 30px;
-  row-gap: 30px;
+  display: grid;
+  column-gap: 25px;
+  row-gap: 25px;
 }
 
-div.container {
+.container {
   text-align: left;
   padding: 10px 20px;
   margin: 0, 0, 0, 0;
@@ -39,17 +44,73 @@ div.container {
 }
 
 .profile-card-trip .profile-card-trip-infos {
-  padding: 25px;
+  // padding: 25px;
+  padding-top: 20px;
+  padding-left: 40px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  width: fit-content;
 }
 
-.profile-card-trip-infos .profile-card-trip-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+.cards {
+  display: grid;
+  grid-gap: 16px;
+  width: auto;
+  height: auto;
 }
 
+.card-category {
+  background-position: center;
+  background-color: #181D31;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-category h1 {
+  font-size: 34px;
+  font-weight: bold;
+  font-family: "Work Sans", "Helvetica", "sans-serif";
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
