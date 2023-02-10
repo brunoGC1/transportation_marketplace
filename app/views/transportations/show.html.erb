@@ -36,8 +36,14 @@
       </div>
     </div>
     <%= link_to "New reservation", new_transportation_reservation_path(@transportation), class: "btn btn-flat" %>
-    <%= link_to "Edit transportation", edit_transportation_path, class: "btn btn-flat" %>
-    <%= link_to "Delete this transportation", delete_transportation_path(@transportation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-flat" %>
+
+    <% if policy(@transportation).edit? %>
+      <%= link_to "Edit transportation", edit_transportation_path, class: "btn btn-flat" %>
+    <% end %>
+    <% if policy(@transportation).destroy? %>
+      <%= link_to "Remove this transportation", delete_transportation_path(@transportation.id),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-flat" %>
+    <% end %>
+
     <%= link_to "Back to list", transportations_path, class: "btn btn-flat" %>
 </div>
 
