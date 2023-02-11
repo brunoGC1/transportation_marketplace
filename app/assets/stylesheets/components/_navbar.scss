@@ -11,6 +11,8 @@
   width: 40px;
 }
 
+
+
 .nav-item {
   border-radius: 8px;
   border-style: none;
@@ -29,7 +31,11 @@
 }
 
 .navbar-brand{
-  border-radius: 50px;
+  border-radius: 200px;
+  height: auto;
+  width: auto;
+    transform:  translatex(50%);
+
 }
 
 .nav-item{
