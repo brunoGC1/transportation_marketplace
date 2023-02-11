@@ -17,7 +17,11 @@
               <%# <p>Price: <%= transportation.price %>
             </div>
             <h2 class="card-trip-pricing"><%= "R$#{transportation.price}" %></h2>
-            <img src="https://w7.pngwing.com/pngs/754/2/png-transparent-samsung-galaxy-a8-a8-user-login-telephone-avatar-pawn-blue-angle-sphere-thumbnail.png" class="card-trip-user avatar-bordered" />
+              <% if transportation.user.photo.attached? %>
+                <%= cl_image_tag transportation.user.photo.key, class: "card-trip-user avatar-bordered" %>
+              <% else %>
+                <img src="https://w7.pngwing.com/pngs/754/2/png-transparent-samsung-galaxy-a8-a8-user-login-telephone-avatar-pawn-blue-angle-sphere-thumbnail.png" class="card-trip-user avatar-bordered" />
+              <% end %>
           </div>
         </div>
       <% end %>
