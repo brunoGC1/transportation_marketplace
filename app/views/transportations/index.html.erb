@@ -4,7 +4,7 @@
   </div>
     <div class="grid-container">
       <% @transportations.each do |transportation| %>
-        <div class="card-trip">
+        <div class="card-trip img-thumbnail">
           <% if transportation.photos.attached? %>
             <%= cl_image_tag(transportation.photos.first.key, :gravity=>"cld-decompose_tile", :crop=>"crop") %>
           <% else %>

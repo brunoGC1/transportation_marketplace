@@ -4,7 +4,7 @@
   </div>
     <div class="grid-container">
       <% @user_transportations.each do |transportation| %>
-        <div class="profile-card-trip">
+        <div class="profile-card-trip img-thumbnail img-fluid" alt="Responsive image">
           <% if transportation.photos.attached? %>
             <%= cl_image_tag(transportation.photos.first.key, :gravity=>"cld-decompose_tile", :crop=>"crop") %>
           <% else %>
@@ -53,7 +53,7 @@
   </div>
   <div class="grid-container">
     <% @user_reservations.each do |reservation| %>
-      <div class="profile-card-trip">
+      <div class="profile-card-trip img-thumbnail">
         <% if reservation.transportation.photos.attached? %>
           <%= cl_image_tag(reservation.transportation.photos.first.key, :gravity=>"cld-decompose_tile", :crop=>"crop") %>
         <% else %>
