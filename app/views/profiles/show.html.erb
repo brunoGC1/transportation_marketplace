@@ -10,33 +10,31 @@
           <% else %>
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
           <% end %>
-          <div class="profile-card-trip-infos">
+          <div class="container">
             <div>
               <p><strong>Reservations for:</strong></p>
               <p><strong>Brand: </strong><%= transportation.brand %></p>
               <p><strong>Model: </strong><%= transportation.brand_model %></p>
               <br>
               <% transportation.reservations.each do |reservation| %>
-                <table class="table table-hover">
-                  <thead>
-                    <tr class="table-success">
-                      <th class="text-center" scope="col">#</th>
-                      <th scope="col">From:</th>
-                      <th scope="col">To:</th>
-                      <th scope="col">Total:</th>
-                      <th scope="col">#</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="table-warning">
-                      <th scope="row"></th>
-                      <td class="text-center"><%= reservation.start_date.strftime('%a, %d-%b-%Y') %></td>
-                      <td class="text-center"><%= reservation.end_date.strftime('%a, %d-%b-%Y') %></td>
-                      <td class="text-center"><%= "R$ #{reservation.total_price}" %></td>
-                      <td class="text-center"><%=     %></td>
-                    </tr>
-                  </tbody>
-                </table>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr class="table-success">
+                        <th class="text-center" scope="col"></th>
+                        <th scope="col">From:</th>
+                        <th scope="col">To:</th>
+                        <th scope="col">Total:</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="table-warning">
+                        <th scope="row"></th>
+                        <td><%= reservation.start_date.strftime('%a, %d-%b-%Y') %></td>
+                        <td><%= reservation.end_date.strftime('%a, %d-%b-%Y') %></td>
+                        <td><%= "R$ #{reservation.total_price}" %></td>
+                      </tr>
+                    </tbody>
+                  </table>
               <br>
               <% end %>
             </div>
